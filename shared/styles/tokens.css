@@ -1,0 +1,41 @@
+/* Дизайн-токены. Цвет в компонентах — только через эти переменные. */
+:root {
+	--background: oklch(0.985 0.002 90);
+	--foreground: oklch(0.18 0.005 270);
+	--card: oklch(1 0 0);
+	--card-foreground: var(--foreground);
+	--popover: oklch(1 0 0);
+	--popover-foreground: var(--foreground);
+	--primary: oklch(0.18 0.005 270);
+	--primary-foreground: oklch(0.985 0 0);
+	--secondary: oklch(0.95 0.003 90);
+	--secondary-foreground: var(--foreground);
+	--muted: oklch(0.95 0.003 90);
+	--muted-foreground: oklch(0.5 0.01 270);
+	--accent: oklch(0.68 0.19 45);
+	--accent-foreground: oklch(0.15 0 0);
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: oklch(0.9 0.004 90);
+	--input: oklch(0.9 0.004 90);
+	--ring: oklch(0.68 0.19 45);
+	--radius: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: oklch(0.15 0.005 270);
+		--foreground: oklch(0.96 0.003 90);
+		--card: oklch(0.19 0.005 270);
+		--popover: oklch(0.19 0.005 270);
+		--primary: oklch(0.96 0.003 90);
+		--primary-foreground: oklch(0.15 0.005 270);
+		--secondary: oklch(0.23 0.006 270);
+		--muted: oklch(0.23 0.006 270);
+		--muted-foreground: oklch(0.7 0.01 270);
+		--accent: oklch(0.74 0.17 50);
+		--destructive: oklch(0.704 0.191 22.216);
+		--border: oklch(1 0 0 / 10%);
+		--input: oklch(1 0 0 / 15%);
+		--ring: oklch(0.74 0.17 50);
+	}
+}

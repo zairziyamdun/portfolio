@@ -1,0 +1,44 @@
+{
+	"Meta": {
+		"title": "Full Name — portfolio",
+		"description": "Frontend developer: websites, interfaces and motion."
+	},
+	"Nav": {
+		"projects": "Projects",
+		"about": "About",
+		"contact": "Contact",
+		"menu": "Menu",
+		"language": "Language"
+	},
+	"Hero": {
+		"eyebrow": "Frontend developer",
+		"title": "I build fast, lively interfaces",
+		"subtitle": "Next.js, React, TypeScript and motion that never gets in the way of reading.",
+		"cta": "See projects"
+	},
+	"About": {
+		"title": "About",
+		"text": "Briefly tell visitors who you are, what you do and what matters to you in your work."
+	},
+	"Projects": {
+		"title": "Projects",
+		"open": "Open project",
+		"back": "All projects",
+		"year": "Year",
+		"role": "Role",
+		"stack": "Stack",
+		"visit": "Visit site",
+		"source": "Source code"
+	},
+	"Contact": {
+		"title": "Let's work together",
+		"text": "Drop me a line — I reply within a day."
+	},
+	"Footer": {
+		"rights": "All rights reserved."
+	},
+	"NotFound": {
+		"title": "Page not found",
+		"back": "Back home"
+	}
+}
