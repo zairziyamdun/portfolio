@@ -2,16 +2,25 @@
 
 Портфолио: Next.js 16 + TypeScript + Tailwind 4, shadcn/ui (Base UI), GSAP + Lenis, next-intl (ru, kk, en). Подробности — в [README.md](README.md).
 
+## Архитектура — Feature-Sliced Design
+
+- Слои в `src/`: `app → pages → widgets → features → entities → shared`. Импорт только вниз по слоям, соседние слайсы одного слоя друг друга не импортируют.
+- В слайс — только через его `index.ts` (`@/entities/project`, не `@/entities/project/ui/...`). В `shared` — через сегмент (`@/shared/i18n`, `@/shared/config`, `@/shared/ui/button`).
+- Корневой `app/` — только роутинг Next.js: файлы в одну строку с реэкспортом из `src/app` или `src/pages`. Логики там нет.
+- Корневой `pages/` пустой и нужен, чтобы Next не принял `src/pages` за Pages Router. Не удалять.
+- Секция, нужная одной странице, лежит в `pages/<page>/ui`. Виджет или фича появляются, только когда их используют минимум в двух местах.
+- Проверка — `pnpm lint:fsd` (steiger).
+
 ## Правила
 
-- **Строки интерфейса** — только через `t()`; новый ключ сразу во все три словаря `messages/{ru,kk,en}.json`. Контент проектов — в `content/projects.ts`, каждый текст `{ ru, kk, en }`.
-- **Ссылки** — `Link` из `@/i18n/navigation`, не из `next/link`.
-- **Цвет** — только из токенов (`text-muted-foreground`, `bg-accent`); нет токена — завести в `shared/styles/tokens.css`.
+- **Строки интерфейса** — только через `t()`; новый ключ сразу во все три словаря `src/shared/i18n/messages/{ru,kk,en}.json`. Проекты — в `src/entities/project/model/projects.ts`, каждый текст `{ ru, kk, en }`.
+- **Ссылки** — `Link` из `@/shared/i18n`, не из `next/link`.
+- **Цвет** — только из токенов (`text-muted-foreground`, `bg-accent`); нет токена — завести в `src/app/styles/tokens.css`.
 - **Классы** — через `cn()` из `@/shared/lib/cn`.
 - **GSAP** — импорт только из `@/shared/lib/gsap`, анимации внутри `useGSAP` и `gsap.matchMedia(MOTION_OK)`, чтобы уважать reduced-motion.
 - **Mobile-first**: база от 320px, без горизонтального скролла, тач-цель ≥ 44px.
 - **Prettier**: табы, без `;`, одинарные кавычки, один атрибут на строку.
-- **После правок**: `pnpm typecheck && pnpm lint && pnpm test`.
+- **После правок**: `pnpm check` (typecheck + lint + lint:fsd + test).
 
 <!-- BEGIN:nextjs-agent-rules -->
 

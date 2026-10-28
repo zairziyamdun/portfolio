@@ -3,10 +3,12 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
 	resolve: {
-		alias: { '@': fileURLToPath(new URL('./', import.meta.url)) }
+		alias: { '@': fileURLToPath(new URL('./src/', import.meta.url)) }
 	},
 	test: {
 		include: ['**/*.test.ts'],
-		exclude: ['node_modules', '.next']
+		exclude: ['node_modules', '.next'],
+		// next-intl импортирует `next/navigation` без расширения — пусть его резолвит Vite.
+		server: { deps: { inline: ['next-intl'] } }
 	}
 })
